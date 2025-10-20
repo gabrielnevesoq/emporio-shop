@@ -1,0 +1,7 @@
+{
+  "name": "emporio-shop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
