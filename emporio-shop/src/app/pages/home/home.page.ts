@@ -5,6 +5,7 @@ import { Supabase } from 'src/app/services/supabase/supabase';
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  standalone: false,
   providers: [Supabase]
 })
 export class HomePage implements OnInit {
