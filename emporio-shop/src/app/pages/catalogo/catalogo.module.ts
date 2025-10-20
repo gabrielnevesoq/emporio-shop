@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
-import { HomePage } from './home.page';
+import { CatalogoPage } from './catalogo.page';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    CatalogoPageRoutingModule,
     ProductCardComponent
   ],
-  declarations: [HomePage]
+  declarations: [CatalogoPage]
 })
-export class HomePageModule {}
+export class CatalogoPageModule {}

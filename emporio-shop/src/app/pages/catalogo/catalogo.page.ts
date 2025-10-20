@@ -2,22 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Supabase } from 'src/app/services/supabase/supabase';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-catalogo',
+  templateUrl: './catalogo.page.html',
+  styleUrls: ['./catalogo.page.scss'],
   standalone: false,
   providers: [Supabase]
 })
-export class HomePage implements OnInit {
+export class CatalogoPage implements OnInit {
   constructor(private supabase: Supabase) { }
-  ngOnInit() { }
+  ngOnInit() {
+    this.GetProdutos();
+  }
 
   // GET - Produtos
   public produtos: any[] = [];
   async GetProdutos() {
-    const {data, error} = await this.supabase.GetProdutos();
-    if(error) {
-      console.error('Erro: ', error);
+    const {error, data} = await this.supabase.GetProdutos();
+    if (error) {
+      console.error("Erro ao carregar dados: ", error);
     } else {
       this.produtos = data;
     }
