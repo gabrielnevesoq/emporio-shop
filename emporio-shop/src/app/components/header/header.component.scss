@@ -1,3 +1,9 @@
-ion-header{
+ion-header {
   padding-right: 1rem;
+  margin: 0 0 -1rem -2.5rem;
+  width: calc(100% + 2.5rem);
+}
+
+ion-buttons{
+  justify-content: space-between;
 }
