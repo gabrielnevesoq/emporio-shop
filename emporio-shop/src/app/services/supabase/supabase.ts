@@ -16,6 +16,7 @@ export class Supabase {
     return await this.supabase.from('tbl_produtos').select('*');
   }
 
+  // GET - Estoque
   async GetEstoque() {
     return await this.supabase.from('tbl_estoque').select('*');
   }
