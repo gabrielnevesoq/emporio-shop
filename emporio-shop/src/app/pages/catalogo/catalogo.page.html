@@ -2,7 +2,8 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of produtos" size="12" size-md="6" size-lg="4">
-        <app-product-card descricao="{{item.nome}}" modelo="{{item.modelo}}" preco="{{item.preco_venda}}"></app-product-card>
+        <app-product-card descricao="{{item.nome}}" modelo="{{item.modelo}}" preco="{{item.preco_venda}}" 
+        estoque="{{FiltrarEstoque(item.id)}}"></app-product-card>
       </ion-col>
     </ion-row>
   </ion-grid>
