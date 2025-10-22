@@ -13,5 +13,5 @@ export class ProductCardComponent  implements OnInit {
   @Input() descricao: string = "";
   @Input() preco    : string = "";
 
-  public estoque: boolean = true;
+  @Input() estoque  : string = "";
 }
