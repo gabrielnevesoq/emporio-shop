@@ -1,23 +1,13 @@
-/** ----- Carrossel ----- */
-.carousel__container {
-width: 100%;
-height: 100%;
-padding-top: 15vh;
-background-color: #fcfcfc;
-margin-top: 2.5rem;
+.content-section{
+  padding: 0 2.5rem 0 2.5rem;
 }
+.content-section:first-child{
+  padding-top: 20vh;
 
-.carousel__container .img__container {
-justify-content: center;
-align-items: center;
-overflow: hidden;
-width: 100%;
-height: 100%;
-display: flex;
 }
 
 /*? ===== Escurece com overlay preto ===== */
-.carousel__container::after {
+#content-section::after {
 content: '';
 position: absolute;
 top: 0;
@@ -27,11 +17,11 @@ height: 90%;
 transition: background-color 0.3s ease;
 }
 
-.carousel__container:hover::after {
+#content-section:hover::after {
 background-color: rgba(0, 0, 0, 0.3); 
 }
 /*? ===== Escurece com overlay preto ===== */
-.carousel__container img {
+#content-section img {
 width: auto;
 height: auto;
 object-fit: contain;
@@ -39,19 +29,14 @@ display: block;
 }
 
 
-
-
-
-
 .product__name {
   display: none;
 }
 
-.carousel__container:hover .product__name {
+.content-section:hover .product__name {
   display: flex;
   position: absolute;
   color: #fff;
-  z-index: 3;
   font-size: 2rem;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
@@ -59,11 +44,163 @@ display: block;
   pointer-events: none;
   text-align: center;
   padding: 0 10px;
+
 }
 
 
 
 
+/* ===== SOBRE A EMPRESA ===== */
+
+.content-section:nth-child(2){
+  background-color:var(--ion-color-primary);
+  display: flex;
+  flex-direction: column;
+
+  h2{
+    margin-top: 0;
+    align-self: center;
+    text-decoration: underline;
+    color: var(--ion-text-secondary);
+
+  }
+  p{ 
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: var(--ion-text-secondary);
+  };
+}
 
 
-/** ----- Carrossel ----- */
+.carousel-slide{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30%;
+}
+
+.about-us{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.topwave{
+  width: 100vw;
+  height: auto;
+  margin-top:10vh;
+  margin-bottom: -1px;
+}
+.bottomwave{
+  width: 100vw;
+  height: auto;
+  rotate: calc(180deg);
+  margin-top: -1px;
+}
+
+.loja-img{
+  margin-top:-20vh;
+  width: 100vw;
+  height: 60vh;
+}
+
+
+.contact-info__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 10vh 10vw;
+}
+
+/*? ===== Formulário ===== */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-left h2 {
+  color: var(--ion-color-primary);
+}
+
+
+.contact-inputs { /* campos de entrada do formulário */
+  width: 25vw;
+  height: 8vh;
+  border: none;
+  outline: none;
+  padding-left: 1.2em;
+  font-weight: 500;
+  border-radius: 50px;
+  border: 2px solid var(--ion-color-primary);
+  background-color: transparent;
+}
+
+.contact-left textarea { /* campo de entrada da mensagem*/
+  height: 20vh;
+  padding-top: 1.2em;
+  border-radius: 20px;
+}
+
+.contact-inputs:focus {
+  border: 2px solid var(--ion-color-secondary);
+}
+
+.contact-inputs::placeholder {
+  color: #a9a9a9;
+}
+
+.contact-left button { /* botão de envio */
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: var(--ion-text-secondary);
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(270deg, #ff994f, #FF7A00 );
+  cursor: pointer;
+}
+
+/*? ===== Informações de contato ===== */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1.2rem 2.4rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 480px;
+
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.icon { /* ícones das informações */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ion-color-primary);
+  color: var(--ion-text-secondary);
+  font-size: 24px;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;;
+}
+
+.info strong { /* texto das informações */
+  font-size: 1.2em;
+  color: var(--ion-text-primary);
+}
+
+.info p {
+  margin: 0;
+  color: #667;
+}

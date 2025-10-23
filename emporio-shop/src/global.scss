@@ -10,6 +10,9 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -27,9 +30,62 @@
 
 
 
+:root {
+	--ion-color-primary: #FF7A00;
+	--ion-color-primary-rgb: 255,122,0;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #e06b00;
+	--ion-color-primary-tint: #ff871a;
 
-ion-content {
-  --padding-start: 2.5rem;
-  --pading-end: 1rem;
-  --padding-bottom: 1rem;
+	--ion-color-secondary: #fddc03;
+	--ion-color-secondary-rgb: 253,220,3;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0,0,0;
+	--ion-color-secondary-shade: #dfc203;
+	--ion-color-secondary-tint: #fde01c;
+
+	--ion-color-tertiary: #7a7a7a;
+	--ion-color-tertiary-rgb: 122,122,122;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-shade: #6b6b6b;
+	--ion-color-tertiary-tint: #878787;
+
+  --ion-text-primary: #131313;
+	--ion-text-primary-rgb: 19,19,19;
+	--ion-text-primary-contrast: #ffffff;
+	--ion-text-primary-contrast-rgb: 255,255,255;
+	--ion-text-primary-shade: #111111;
+	--ion-color-primary-tint: #2b2b2b;
+
+	--ion-text-secondary: #fafafa;
+	--ion-text-secondary-rgb: 250,250,250;
+	--ion-text-secondary-contrast: #000000;
+	--ion-text-secondary-contrast-rgb: 0,0,0;
+	--ion-text-secondary-shade: #dcdcdc;
+	--ion-text-secondary-tint: #fbfbfb;
+
+}
+
+h1 {
+  color: var(--ion-text-primary);
+  font-size: 3rem;
+}
+
+h2{
+  margin-top: 5rem;
+  color: var(--ion-text-primary);
+  font-size: 2rem;
+}
+
+h3{
+  color: var(--ion-text-primary);
+  font-size: 1.5rem;
+}
+
+
+p {
+  color: var(--ion-text-primary);
+  font-size: 1rem;
 }
