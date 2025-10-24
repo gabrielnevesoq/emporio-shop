@@ -10,6 +10,11 @@ ion-buttons{
   justify-content: space-between;
 }
 
+ion-button.active {
+  --color: var(--ion-color-primary);
+  font-weight: bold;
+}
+
 img{
   height: 10vh;
 }
