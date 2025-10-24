@@ -1,13 +1,151 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <section class="content-section" id="content-section" #homeSection>
+      <swiper-container [loop] = "true" autoplay="true" autoplay-delay="5000" speed = "1000" autoplay-pause-on-mouse-enter = "true">
+        <swiper-slide>
+          <div class="carousel-slide">
+            <img src="../../../assets/Produtos/CILINDROS_PNEUMATICOS__700x525.png" alt="CILINDROS PNEUMATICOS">
+            <span class="product__name">CILINDROS PNEUMATICOS</span>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="carousel-slide">
+            <img src="../../../assets/Produtos/FUSOS_ESFERICOS_E_CASTANHAS__700x525.png" alt="FUSOS E CASTANHAS">
+            <span class="product__name">FUSOS E CASTANHAS</span>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="carousel-slide">
+            <img src="../../../assets/Produtos/GUIAS_LINEARES_TILHO_E_BLOCOS__700x525.png" alt="GUIAS LINEARES">
+            <span class="product__name">GUIAS LINEARES</span>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="carousel-slide">
+            <img src="../../../assets/Produtos/SISTEMAS_DE_TRATAMENTO_DE_AR__700x525.png" alt="SISTEMAS DE TRATAMENTO DE AR">
+            <span class="product__name">SISTEMAS DE TRATAMENTO DE AR</span>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="carousel-slide">
+            <img src="../../../assets/Produtos/VALVULAS_PNEUMATICAS__700x525.png" alt="VÁLVULAS PNEUMÁTICAS">
+            <span class="product__name">VÁLVULAS PNEUMÁTICAS</span>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+  </section>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <section class="about-us">
+    <img src="../../../assets/wave.svg" alt="wave" class="topwave">
+    <div class="content-section">
+      <h2 class="section-title">Quem Somos</h2>
+      <p>
+        A EMPORIO SPA é uma distribuidora de produtos de alto desenvolvimento
+        tecnológico voltados para a Automação Industrial. Com uma ampla gama de
+        produtos, atendemos todos os tipos de indústrias, oferecendo soluções
+        completas que incluem painéis de controle e comando, elementos de fixação
+        e movimentação, cabos, sensores, terminais, IHMs e muito mais.<br />
+        Nossa missão é contribuir para a eficiência e sustentabilidade na cadeia
+        produtiva de nossos clientes.
+      </p>
+    </div>
+    <img src="../../../assets/wave-down.svg" alt="wave-down" class="bottomwave">
+    <img src="../../../assets/fachada.jpg" alt="fachada" class="loja-img">
+  </section>
+
+  <section class="content-section" #contactSection>
+  <div class="contact-info__container">
+    <!--? ===== Formulário ===== -->
+  <form
+    id="contato"
+    class="contact-left"
+    (ngSubmit)="onSubmit(contactForm)" 
+    #contactForm="ngForm"
+  >
+    <h2>Entre em contato</h2>
+    <input
+    type="hidden"
+    name="access_key"
+    [(ngModel)]="formData.access_key"
+    />
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="formData.name"
+      placeholder="Digite seu nome..."
+      class="contact-inputs"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="formData.email"
+      placeholder="Digite seu email..."
+      class="contact-inputs"
+      required
+    />
+    <textarea
+      name="message"
+      [(ngModel)]="formData.message"
+      placeholder="Digite sua mensagem..."
+      class="contact-inputs"
+      required
+    ></textarea>
+    <button type="submit">Enviar</button>
+    <!-- <input type="hidden" name="redirect" value="http://localhost:4200/catalogo"> -->
+  </form>
+  <!--? ===== Formulário ===== -->
+
+    <!--? ===== Informações de contato ===== -->
+    <div class="contact-right">
+      <!--? ===== TELEFONE ===== -->
+      <div class="contact-item">
+        <div class="icon"><i class="bi bi-telephone-forward"></i></div>
+        <div class="info">
+          <strong>Telefone:</strong>
+          <p>(31) 3352-8709 | (31) 2565-4440</p>
+        </div>
+      </div>
+      <!--? ===== TELEFONE ===== -->
+
+      <!--? ===== WHATSAPP ===== -->
+      <div class="contact-item">
+        <div class="icon"><i class="bi bi-whatsapp"></i></div>
+        <div class="info">
+          <strong>Whatsapp:</strong>
+          <p>(31) 97159-1206</p>
+        </div>
+      </div>
+      <!--? ===== WHATSAPP ===== -->
+
+      <!--? ===== E-MAIL ===== -->
+      <div class="contact-item">
+        <div class="icon"><i class="bi bi-envelope-arrow-up"></i></div>
+        <div class="info">
+          <strong>E-mail:</strong>
+          <p>emporio&#64;spaemporio.com.br</p>
+        </div>
+      </div>
+      <!--? ===== E-MAIL ===== -->
+
+      <!--? ===== ENDEREÇO ===== -->
+      <div class="contact-item">
+        <div class="icon"><i class="bi bi-geo-alt"></i></div>
+        <div class="info">
+          <strong>Endereço:</strong>
+          <p>
+            José Faria da Rocha, 224<br />Eldorado - Contagem - MG<br />CEP:
+            32.315-040
+          </p>
+        </div>
+      </div>
+      <!--? ===== ENDEREÇO ===== -->
+    </div>
+    <!--? ===== Informações de contato ===== -->
+  </div>
+  </section>
+
+  <app-footer></app-footer>
+
 </ion-content>
+

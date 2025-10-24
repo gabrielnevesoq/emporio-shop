@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <div class="logo">
+        <ion-button (click)="scrollToSection('homeSection')">
+          <img src="../../assets/Emporio-SemFundo.png" alt="Empório SPA">
+        </ion-button>
+      </div>
+      <div class="navigation">
+        <ion-button [ngClass]="{'active': activeSectionId === 'homeSection'}" (click)="scrollToSection('homeSection')">
+          início
+        </ion-button>
+        <ion-button [ngClass]="{'active': activeSectionId === 'contactSection'}" (click)="scrollToSection('contactSection')">
+          Contato
+        </ion-button>
+          <ion-button>
+            Catálogo
+          </ion-button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

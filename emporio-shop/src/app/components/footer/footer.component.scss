@@ -1,0 +1,10 @@
+ion-toolbar{
+  --background: var(--ion-color-tertiary);
+}
+
+p{
+  color: var(--ion-text-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
