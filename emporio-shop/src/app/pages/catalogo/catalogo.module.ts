@@ -15,7 +15,7 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
     FormsModule,
     IonicModule,
     CatalogoPageRoutingModule,
-    ProductCardComponent
+    ProductCardComponent,
   ],
   declarations: [CatalogoPage]
 })
