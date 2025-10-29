@@ -1,27 +1,22 @@
 .content-section{
   padding: 0 2.5rem 0 2.5rem;
 }
-.content-section:first-child{
-  padding-top: 20vh;
-
-}
-
 /*? ===== Escurece com overlay preto ===== */
-#content-section::after {
+#carousel-section::after {
 content: '';
 position: absolute;
 top: 0;
 left: 0;
 width: 100%;
-height: 90%;
+height: 80%;
 transition: background-color 0.3s ease;
 }
 
-#content-section:hover::after {
+#carousel-section:hover::after {
 background-color: rgba(0, 0, 0, 0.3); 
 }
 /*? ===== Escurece com overlay preto ===== */
-#content-section img {
+#carousel-section img {
 width: auto;
 height: auto;
 object-fit: contain;
@@ -46,9 +41,6 @@ display: block;
   padding: 0 10px;
 
 }
-
-
-
 
 /* ===== SOBRE A EMPRESA ===== */
 

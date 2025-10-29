@@ -23,6 +23,7 @@ export class CatalogoPage implements OnInit {
       console.error("Erro ao carregar dados: ", error);
     } else {
       this.produtos = data;
+      this.produtosFiltrados = [...this.produtos];
     }
   }
 
@@ -47,4 +48,17 @@ export class CatalogoPage implements OnInit {
       return "Indisponível A Pronta Entrega";
     }
   }
+
+  // Filtrando Produtos
+  public produtosFiltrados: any[] = [];
+
+  filtrarProdutos(ev: CustomEvent) {
+    const valor = ev.detail.value?.toLowerCase() || '';
+    this.produtosFiltrados = this.produtos.filter(produto =>
+      produto.nome?.toLowerCase().includes(valor) ||
+      produto.modelo?.toLowerCase().includes(valor) ||
+      produto.marca?.toLowerCase().includes(valor)
+    );
+  }
 }
+

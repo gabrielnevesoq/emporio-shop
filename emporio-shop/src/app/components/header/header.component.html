@@ -2,18 +2,18 @@
   <ion-toolbar>
     <ion-buttons>
       <div class="logo">
-        <ion-button (click)="scrollToSection('homeSection')">
+        <ion-button (click)="goToSection('homeSection')">
           <img src="../../assets/Emporio-SemFundo.png" alt="Empório SPA">
         </ion-button>
       </div>
       <div class="navigation">
-        <ion-button [ngClass]="{'active': activeSectionId === 'homeSection'}" (click)="scrollToSection('homeSection')">
+        <ion-button [class.active]="activeSectionId === 'homeSection'" (click)="goToSection('homeSection')">
           início
         </ion-button>
-        <ion-button [ngClass]="{'active': activeSectionId === 'contactSection'}" (click)="scrollToSection('contactSection')">
+        <ion-button [class.active]="activeSectionId === 'contactSection'" (click)="goToSection('contactSection')">
           Contato
         </ion-button>
-          <ion-button>
+          <ion-button [class.active]="activeSectionId === 'catalogo'" (click)="goToCatalogo()">
             Catálogo
           </ion-button>
       </div>
