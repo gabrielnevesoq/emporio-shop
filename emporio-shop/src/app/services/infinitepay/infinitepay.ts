@@ -2,19 +2,29 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface InfinitePayItem {
+  quantity   : number;
+  price      : number; // em centavos
+  description: string;
+}
+
+export interface InfinitePayCheckoutRequest {
+  handle      : string;
+  redirect_url: string;
+  webhook_url : string;
+  order_nsu   : string;
+  items       : InfinitePayItem[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class Infinitepay {
-  private apiUrl = 'https://api.infinitepay.io/invoices/public/checkout/links';
+  private apiUrl = 'https://localhost:44302/api/InfinitePay';
   constructor(private http: HttpClient) {}
 
-  // Gerando link de pagamento
-  @Input() valor_produto: string = "";
-  GerarLink(dados: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post(this.apiUrl, dados, {headers});
+  // Gerando o pagamento
+  GerarCheckout(data: InfinitePayCheckoutRequest): Observable<any> {
+    return this.http.post(`${this.apiUrl}/checkout`, data);
   }
 }
