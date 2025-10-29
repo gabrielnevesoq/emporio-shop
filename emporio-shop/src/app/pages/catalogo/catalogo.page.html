@@ -4,6 +4,12 @@
     placeholder="Buscar produtos..."
     (ionInput)="filtrarProdutos($event)">
   </ion-searchbar>
+  <ion-select placeholder="Ordenar por" (ionChange)="ordenarPor($event.detail.value)">
+    <ion-select-option value="nome">Nome</ion-select-option>
+    <ion-select-option value="modelo">Modelo</ion-select-option>
+    <ion-select-option value="marca">Marca</ion-select-option>
+    <ion-select-option value="preco_venda">Preço</ion-select-option>
+</ion-select>
   <section class="content-section">
     @if (produtosFiltrados.length > 0) {
       <ion-grid>

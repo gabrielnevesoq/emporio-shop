@@ -60,5 +60,16 @@ export class CatalogoPage implements OnInit {
       produto.marca?.toLowerCase().includes(valor)
     );
   }
+
+  // Ordenando produtos
+  ordenarPor(campo: 'nome' |'modelo'| 'marca' | 'preco_venda', ordem: 'asc' | 'desc' = 'asc') {
+    const fator = ordem === 'asc' ? 1 : -1;
+    this.produtosFiltrados.sort((a, b) => {
+      if (campo === 'preco_venda') {
+        return (a[campo] - b[campo]) * fator;
+      }
+      return a[campo].localeCompare(b[campo]) * fator;
+    });
+  }
 }
 
