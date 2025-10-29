@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Infinitepay } from 'src/app/services/infinitepay/infinitepay';
+import { Infinitepay, InfinitePayCheckoutRequest } from 'src/app/services/infinitepay/infinitepay';
+import { Pagarme } from 'src/app/services/pagarme/pagarme';
 import { Supabase } from 'src/app/services/supabase/supabase';
 
 @Component({
@@ -7,10 +8,10 @@ import { Supabase } from 'src/app/services/supabase/supabase';
   templateUrl: './catalogo.page.html',
   styleUrls: ['./catalogo.page.scss'],
   standalone: false,
-  providers: [Supabase, Infinitepay]
+  providers: [Supabase, Infinitepay, Pagarme]
 })
 export class CatalogoPage implements OnInit {
-  constructor(private supabase: Supabase, private infinitepay: Infinitepay) { }
+  constructor(private supabase: Supabase, private infinitepay: Infinitepay, private pagamento: Pagarme) { }
   ngOnInit() {
     this.GetProdutos();
     this.GetEstoque();
@@ -50,31 +51,16 @@ export class CatalogoPage implements OnInit {
   }
 
   // Serviço de pagamento
+  public carrinho: any[] = [
+    { nome: 'Produto A', preco: 50, quantidade: 40 }
+  ];
+  public nome_compra: string = "";
   GerarPagamento() {
-    const dados = {
-      handle      : 'globalnode',
-      redirect_url: 'https://seusite.com/obrigado',
-      webhook_url : 'https://seusite.com/webhook',
-      order_nsu   : '123456',
-      items: [
-        {
-          quantity   : 1,
-          price      : 1000,
-          description: 'Teste Produto'
-        },
-      ]
-    };
-
-    this.infinitepay.GerarLink(dados).subscribe({
-      next: (res) => {
-        console.log('Checkout criado com sucesso:', res);
-        // Exemplo: redirecionar para o link retornado
-        if (res?.checkout_url) {
-          window.open(res.checkout_url, '_blank');
-        }
-      },
-      error: (err) => {
-        console.error('Erro ao gerar checkout:', err);
+    this.pagamento.GerarCheckout(this.carrinho, this.nome_compra).subscribe((res: any) => {
+      if (res.sucesso && res.checkoutUrl) {
+        window.location.href = res.checkoutUrl; // redireciona pro checkout da Pagar.me
+      } else {
+        console.error('Erro:', res.erro);
       }
     });
   }
