@@ -1,12 +1,67 @@
+<app-header></app-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let item of produtos" size="12" size-md="6" size-lg="4">
-        <app-product-card descricao="{{item.nome}}" modelo="{{item.modelo}}" preco="{{item.preco_venda}}" 
-        estoque="{{FiltrarEstoque(item.id)}}"></app-product-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
-  <ion-button (click)="GerarPagamento()">teste</ion-button>
+    <ion-searchbar
+    placeholder="Buscar produtos..."
+    (ionInput)="filtrarProdutos($event)">
+  </ion-searchbar>
+
+  <div class="sort-buttons">
+  <ion-button fill="outline" (click)="ordenarPor('nome')">Nome</ion-button>
+  <ion-button fill="outline" (click)="ordenarPor('marca')">Marca</ion-button>
+  <ion-button fill="outline" (click)="ordenarPor('preco_venda')">Preço</ion-button>
+</div>
+
+
+  <section class="content-section">
+    @if (produtosFiltrados.length > 0) {
+      <ion-grid>
+        <ion-row>
+          @for (item of produtosFiltrados; track item.id) {
+            <ion-col size="6" size-md="4" size-lg="3">
+              <app-product-card
+                [descricao]="item.nome"
+                [modelo]="item.modelo"
+                [preco]="item.preco_venda"
+                [estoque]="FiltrarEstoque(item.id)">
+              </app-product-card>
+            </ion-col>
+          }
+        </ion-row>
+      </ion-grid>
+    } @else {
+      <div class="sem-resultados ion-text-center ion-padding">
+        <ion-icon name="alert-circle-outline" size="large" color="medium"></ion-icon>
+        <p>Nenhum produto encontrado</p>
+      </div>
+    }
+  </section>
+  <!-- <section class="content-section">
+    <ion-grid>
+      <ion-row>
+        @for (item of produtos; track item.id) {
+          <ion-col size="2" size-md="2" size-lg="3">
+            <app-product-card
+              [descricao]="item.nome"
+              [modelo]="item.modelo"
+              [preco]="item.preco_venda"
+              [estoque]="FiltrarEstoque(item.id)">
+            </app-product-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+  </section> -->
+  <!-- <section class="content-section">
+    <div class="product-grid">
+      @for (item of produtos; track item.id) {
+        <app-product-card
+          [descricao]="item.nome"
+          [modelo]="item.modelo"
+          [preco]="item.preco_venda"
+          [estoque]="FiltrarEstoque(item.id)">
+        </app-product-card>
+      }
+    </div>
+  </section> -->
+  <app-footer></app-footer>
 </ion-content>

@@ -11,6 +11,7 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     HomePageRoutingModule,
     ProductCardComponent,
     NgbModule,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
