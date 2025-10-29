@@ -3,10 +3,10 @@ import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ScrollService {
-  private scrollSubject = new Subject<string>();
-  scrollRequest$ = this.scrollSubject.asObservable();
+  private scrollRequestSource = new Subject<string>();
+  scrollRequest$ = this.scrollRequestSource.asObservable();
 
-  requestScroll(sectionId: string) {
-    this.scrollSubject.next(sectionId);
+  scrollTo(sectionId: string) {
+    this.scrollRequestSource.next(sectionId);
   }
 }

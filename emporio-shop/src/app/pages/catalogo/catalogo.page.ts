@@ -25,6 +25,7 @@ export class CatalogoPage implements OnInit {
       console.error("Erro ao carregar dados: ", error);
     } else {
       this.produtos = data;
+      this.produtosFiltrados = [...this.produtos];
     }
   }
 
@@ -50,18 +51,16 @@ export class CatalogoPage implements OnInit {
     }
   }
 
-  // Serviço de pagamento
-  public carrinho: any[] = [
-    { nome: 'Produto A', preco: 50, quantidade: 40 }
-  ];
-  public nome_compra: string = "";
-  GerarPagamento() {
-    this.pagamento.GerarCheckout(this.carrinho, this.nome_compra).subscribe((res: any) => {
-      if (res.sucesso && res.checkoutUrl) {
-        window.location.href = res.checkoutUrl; // redireciona pro checkout da Pagar.me
-      } else {
-        console.error('Erro:', res.erro);
-      }
-    });
+  // Filtrando Produtos
+  public produtosFiltrados: any[] = [];
+
+  filtrarProdutos(ev: CustomEvent) {
+    const valor = ev.detail.value?.toLowerCase() || '';
+    this.produtosFiltrados = this.produtos.filter(produto =>
+      produto.nome?.toLowerCase().includes(valor) ||
+      produto.modelo?.toLowerCase().includes(valor) ||
+      produto.marca?.toLowerCase().includes(valor)
+    );
   }
 }
+
