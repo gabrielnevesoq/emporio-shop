@@ -2,11 +2,40 @@
   min-height: 100vh;
 }
 
+
+
+//Barra de pesquisa
+.searchbar-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+ion-searchbar{
+  width: 30vw;
+}
+
+.sort-buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+ion-item{
+  display: flex;
+  align-items: center;
+}
+
+ion-item ion-label{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+// Filtros
 .sem-resultados{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }

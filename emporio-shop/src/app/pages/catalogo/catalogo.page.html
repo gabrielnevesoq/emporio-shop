@@ -1,16 +1,30 @@
 <app-header></app-header>
 <ion-content>
+
+  <div class="searchbar-container">
     <ion-searchbar
-    placeholder="Buscar produtos..."
-    (ionInput)="filtrarProdutos($event)">
-  </ion-searchbar>
+      placeholder="Buscar produtos..."
+      (ionInput)="filtrarProdutos($event)">
+    </ion-searchbar>
 
-  <div class="sort-buttons">
-  <ion-button fill="outline" (click)="ordenarPor('nome')">Nome</ion-button>
-  <ion-button fill="outline" (click)="ordenarPor('marca')">Marca</ion-button>
-  <ion-button fill="outline" (click)="ordenarPor('preco_venda')">Preço</ion-button>
-</div>
 
+    <div class="sort-buttons">
+      <!-- <span>Ordenar por: </span> -->
+      <ion-item button lines="none" button id="trigger-dropdown">
+        <ion-label><i class="bi bi-filter"></i>{{ categoriaSelecionada ||  '' }}</ion-label>
+      </ion-item>
+      <ion-popover trigger="trigger-dropdown" dismissOnSelect="true">
+        <ng-template>
+          <ion-list>
+            <ion-item button (click)="selecionar('Nome'); ordenarPor('nome')">Nome</ion-item>
+            <ion-item button (click)="selecionar('Marca'); ordenarPor('marca')">Marca</ion-item>
+            <ion-item button (click)="selecionar('Preço'); ordenarPor('preco_venda')">Preço</ion-item>
+          </ion-list>
+        </ng-template>
+      </ion-popover>
+    </div>
+
+  </div>
 
   <section class="content-section">
     @if (produtosFiltrados.length > 0) {

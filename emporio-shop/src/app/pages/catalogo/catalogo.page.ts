@@ -73,5 +73,13 @@ export class CatalogoPage implements OnInit {
       return a[campo].localeCompare(b[campo]) * fator;
     });
   }
+
+
+  //Área de teste
+  categoriaSelecionada = '';
+
+selecionar(valor: string) {
+  this.categoriaSelecionada = valor;
+}
 }
 
