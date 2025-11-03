@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meu Carrinho</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of carrinho">
+      <ion-label>
+        <h2>{{ item.nome }}</h2>
+        <p>Qtd: {{ item.quantidade }} x {{ item.preco | currency:'BRL' }}</p>
+      </ion-label>
+      
+      <ion-note slot="end" color="primary">
+        {{ (item.preco * item.quantidade) | currency:'BRL' }}
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="!carrinho || carrinho.length === 0" style="text-align: center; padding: 20px;">
+    <p>Seu carrinho está vazio.</p>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="carrinho.length > 0">
+  <ion-toolbar>
+    <div>
+      <ion-title>
+        Total: {{ calcularTotal() | currency:'BRL' }}
+      </ion-title>
+      <ion-button id="finalizar-compra" (click)="confirmarPagamento()" [disabled]="carrinho.length === 0">
+        Finalizar Compra e Pagar
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

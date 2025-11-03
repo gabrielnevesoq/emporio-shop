@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class Pagarme {
-  private apiUrl_teste = 'https://localhost:7095/api/pagamento/checkout';
-  private apiUrl       = 'https://localhost:7095/api/pagamento/checkout';
+  private apiUrl_teste = 'http://localhost:7096/api/asaas/checkout';
+  private apiUrl       = 'https://api-asaas.vercel.app/asaas/checkout';
   constructor(private http: HttpClient) {}
 
   // Gerando checkout
@@ -22,6 +22,6 @@ export class Pagarme {
     };
     
     // O Angular envia o payload (camelCase) e o C# (PascalCase) entende
-    return this.http.post(this.apiUrl_teste, payload);
+    return this.http.post(this.apiUrl, payload);
   }
 }

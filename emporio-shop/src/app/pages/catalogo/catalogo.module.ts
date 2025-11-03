@@ -8,6 +8,8 @@ import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { CartModalComponent } from 'src/app/components/cart-modal/cart-modal.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
     FormsModule,
     IonicModule,
     CatalogoPageRoutingModule,
-    ProductCardComponent
+    ProductCardComponent,
+    HeaderComponent,
+    CartModalComponent
   ],
   declarations: [CatalogoPage]
 })
