@@ -27,6 +27,7 @@ export class CatalogoPage implements OnInit {
       console.error("Erro ao carregar dados: ", error);
     } else {
       this.produtos = data;
+      this.produtosFiltrados = [...this.produtos];
     }
   }
 
@@ -70,6 +71,29 @@ export class CatalogoPage implements OnInit {
       } else {
         console.error('Erro ao gerar pagamento:', res.erro);
       }
+    });
+  }
+
+  // Filtrando Produtos
+  public produtosFiltrados: any[] = [];
+
+  filtrarProdutos(ev: CustomEvent) {
+    const valor = ev.detail.value?.toLowerCase() || '';
+    this.produtosFiltrados = this.produtos.filter(produto =>
+      produto.nome?.toLowerCase().includes(valor) ||
+      produto.modelo?.toLowerCase().includes(valor) ||
+      produto.marca?.toLowerCase().includes(valor)
+    );
+  }
+
+  // Ordenando produtos
+  ordenarPor(campo: 'nome' |'modelo'| 'marca' | 'preco_venda', ordem: 'asc' | 'desc' = 'asc') {
+    const fator = ordem === 'asc' ? 1 : -1;
+    this.produtosFiltrados.sort((a, b) => {
+      if (campo === 'preco_venda') {
+        return (a[campo] - b[campo]) * fator;
+      }
+      return a[campo].localeCompare(b[campo]) * fator;
     });
   }
 
@@ -149,4 +173,13 @@ export class CatalogoPage implements OnInit {
       console.log("PÁGINA: Modal fechado sem ação de pagamento (Role:", role, ")");
     }
   }
+
+
+  //Área de teste
+  categoriaSelecionada = '';
+
+  selecionar(valor: string) {
+   this.categoriaSelecionada = valor;
+  }
 }
+

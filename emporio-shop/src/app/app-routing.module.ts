@@ -13,9 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'catalogo',
-    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule),
+    pathMatch: 'full'
   },
-
 ];
 
 @NgModule({
