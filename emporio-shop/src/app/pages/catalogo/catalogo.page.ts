@@ -17,6 +17,12 @@ export class CatalogoPage implements OnInit {
   ngOnInit() {
     this.GetProdutos();
     this.GetEstoque();
+    
+    // Ouve os eventos disparados pelo cart-modal
+    window.addEventListener('carrinhoAtualizado', (event: any) => {
+      this.carrinho = event.detail;
+      this.AtualizarTotalCarrinho();
+    });
   }
 
   // GET - Produtos
@@ -175,11 +181,12 @@ export class CatalogoPage implements OnInit {
   }
 
 
-  //Área de teste
+  // Sort por categoria
   categoriaSelecionada = '';
 
   selecionar(valor: string) {
-   this.categoriaSelecionada = valor;
+    this.categoriaSelecionada = valor;
+
   }
 }
 

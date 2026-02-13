@@ -1,8 +1,8 @@
 #finalizar-compra {
-    background-color: lightgray;
-    color: black;
-    border: 1px solid lightgray;
-    border-radius: 30px;
+  background-color: lightgray;
+  color: black;
+  border: 1px solid lightgray;
+  border-radius: 30px;
 }.content-section{
   min-height: 100vh;
 }
@@ -10,11 +10,20 @@
 
 
 //Barra de pesquisa
+.catalogue-top{
+  position: relative;
+  width: 100%;
+  height: 10%;
+}
+
 .searchbar-container{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
 
 ion-searchbar{
   width: 30vw;
@@ -24,6 +33,11 @@ ion-searchbar{
   display: flex;
   flex-direction: row;
 }
+.sort-buttons ion-item ion-label:hover{
+  color: var(--ion-color-primary);
+}
+
+
 
 ion-item{
   display: flex;
@@ -31,9 +45,9 @@ ion-item{
 }
 
 ion-item ion-label{
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
 // Filtros
@@ -43,4 +57,18 @@ ion-item ion-label{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+// Carrinho
+.cart-button{
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  --background: none;
+  --border: none;
+  --box-shadow: none;
+}
+
+.cart-button:hover{
+  --color:var(--ion-color-primary);
 }

@@ -1,40 +1,67 @@
+<!--* ===== CABEÇALHO ===== *-->
 <ion-header>
   <ion-toolbar>
-    <ion-title>Meu Carrinho</ion-title>
+    <ion-title>Carrinho</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="fecharModal()">Fechar</ion-button>
+      <ion-button (click)="fecharModal()"><i class="bi bi-x-lg"></i></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<!--* ===== CORPO ===== -->
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of carrinho">
-      <ion-label>
-        <h2>{{ item.nome }}</h2>
-        <p>Qtd: {{ item.quantidade }} x {{ item.preco | currency:'BRL' }}</p>
-      </ion-label>
-      
-      <ion-note slot="end" color="primary">
-        {{ (item.preco * item.quantidade) | currency:'BRL' }}
-      </ion-note>
-    </ion-item>
+    @for (item of carrinho; track $index) {
+      <ion-item>
+        <ion-label>
+          <h2>{{ item.nome }}</h2>
+          <p>{{ item.preco | currency:'BRL' }}</p>
+        </ion-label>
+        <!-- CONTROLE DE QUANTIDADE -->
+        <div class="quantidade-box" slot="end">
+          <ion-button fill="clear" color="dark" (click)="diminuir(item)">
+            <ion-icon
+              [name]="item.quantidade > 1 ? 'remove-outline' : 'trash-outline'">
+            </ion-icon>
+          </ion-button>
+
+          <ion-input
+            type="number"
+            [(ngModel)]="item.quantidade"
+            (ionChange)="atualizarQuantidade(item)"
+            class="quantidade-input"
+          ></ion-input>
+
+          <ion-button fill="clear" color="dark" (click)="aumentar(item)">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <ion-note color="primary" slot="end">
+          {{ (item.preco * item.quantidade) | currency:'BRL' }}
+        </ion-note>
+      </ion-item>
+    }
   </ion-list>
 
-  <div *ngIf="!carrinho || carrinho.length === 0" style="text-align: center; padding: 20px;">
-    <p>Seu carrinho está vazio.</p>
-  </div>
+  @if (!carrinho || carrinho.length === 0) {
+    <div style="text-align: center; padding: 20px;">
+      <p>Seu carrinho está vazio.</p>
+    </div>
+  }
 </ion-content>
 
-<ion-footer *ngIf="carrinho.length > 0">
-  <ion-toolbar>
-    <div>
-      <ion-title>
-        Total: {{ calcularTotal() | currency:'BRL' }}
-      </ion-title>
-      <ion-button id="finalizar-compra" (click)="confirmarPagamento()" [disabled]="carrinho.length === 0">
-        Finalizar Compra e Pagar
-      </ion-button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+@if (carrinho.length > 0) {
+  <ion-footer>
+    <ion-toolbar>
+      <div>
+        <ion-title>
+          Total: {{ total | currency:'BRL' }}
+        </ion-title>
+        <ion-button id="finalizar-compra" (click)="confirmarPagamento()" [disabled]="carrinho.length === 0">
+          Finalizar pedido
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+}

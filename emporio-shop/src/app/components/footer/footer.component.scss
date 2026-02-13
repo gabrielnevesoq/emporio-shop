@@ -1,5 +1,6 @@
 ion-toolbar{
   --background: var(--ion-color-tertiary);
+  padding: 1rem 2.5rem;
 }
 
 p{
@@ -7,4 +8,20 @@ p{
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+p a {
+  margin-left: 6px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+p a:hover{
+  color: var(--ion-color-primary-shade);
+}
+
+.credits{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

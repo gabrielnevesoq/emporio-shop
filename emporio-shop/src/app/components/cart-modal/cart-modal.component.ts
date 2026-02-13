@@ -15,6 +15,7 @@ export class CartModalComponent  implements OnInit {
 
   // 1. Recebe o array 'carrinho' que vem da página principal
   @Input() carrinho: any[] = [];
+  total: number = 0;
 
   // 2. Função para o botão "Fechar"
   fecharModal() {
@@ -23,7 +24,11 @@ export class CartModalComponent  implements OnInit {
 
   // 3. Função para calcular o total
   calcularTotal() {
-    return this.carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
+    this.total = this.carrinho.reduce(
+      (soma, item) => soma + item.preco * item.quantidade,
+      0
+    );
+    return this.total;
   }
 
   // Finzalizar compra
@@ -33,4 +38,46 @@ export class CartModalComponent  implements OnInit {
     // A página (catalogo.page) vai escutar esse sinal.
     this.modalCtrl.dismiss(null, 'pagar');
   }
+
+  // Aumentar quantidade
+  aumentar(item: any) {
+    item.quantidade++;
+    this.calcularTotal();
+    this.emitirAtualizacaoCarrinho();
+  }
+
+  // Diminuir quantidade (se for 1, remove)
+  diminuir(item: any) {
+    if (item.quantidade > 1) {
+      item.quantidade--;
+    } else {
+      const index = this.carrinho.indexOf(item);
+      if (index > -1) {
+        this.carrinho.splice(index, 1);
+      }
+    }
+    this.calcularTotal();
+    this.emitirAtualizacaoCarrinho();
+  }
+
+  // Atualizar valor manualmente (digitado)
+  atualizarQuantidade(item: any) {
+    if (item.quantidade < 1 || isNaN(item.quantidade)) {
+      const index = this.carrinho.indexOf(item);
+      if (index > -1) {
+        this.carrinho.splice(index, 1);
+      }
+    }
+    this.calcularTotal();
+    this.emitirAtualizacaoCarrinho();
+  }
+
+  // Atualiza o simbolo do carrinho no catalogo
+  emitirAtualizacaoCarrinho() {
+  // dispara um CustomEvent manualmente para a janela pai
+  window.dispatchEvent(new CustomEvent('carrinhoAtualizado', {
+    detail: this.carrinho
+  }));
+}
+
 }

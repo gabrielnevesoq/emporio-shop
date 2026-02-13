@@ -3,6 +3,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular
 import { NgForm } from '@angular/forms';
 import { NavigationService } from 'src/app/services/headerServices/navigation.service';
 import { ScrollService } from 'src/app/services/headerServices/scroll.service';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,7 @@ import { ScrollService } from 'src/app/services/headerServices/scroll.service';
   standalone: false,
 })
 export class HomePage implements OnInit, AfterViewInit {
+  svgContent!: SafeHtml;
 
   @ViewChild('homeSection') homeSection!: ElementRef;
   @ViewChild('contactSection') contactSection!: ElementRef;
@@ -21,13 +24,21 @@ export class HomePage implements OnInit, AfterViewInit {
   constructor(
     private scrollService: ScrollService,
     private navigationService: NavigationService,
-    private supabase: Supabase
+    private supabase: Supabase,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+    
   ) { }
 
 
   ngOnInit(): void {
     this.scrollService.scrollRequest$.subscribe(sectionId => {
       this.scrollToSection(sectionId);
+    });
+
+    this.http.get('assets/svg/manufacturing-process.svg.html', { responseType: 'text' })
+    .subscribe(svg => {
+      this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svg);
     });
   }
 

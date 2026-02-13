@@ -1,10 +1,12 @@
 
 ion-toolbar{
-  padding: 0 1rem 0 1rem;
+  padding-right: 1rem;
 }
+
 
 ion-buttons{
   justify-content: space-between;
+  // padding-right: 1rem;
 }
 
 ion-button.active {

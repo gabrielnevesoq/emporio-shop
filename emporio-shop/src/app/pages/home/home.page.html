@@ -2,59 +2,61 @@
 
 <ion-content>
   <section class="content-section" id="carousel-section" #homeSection>
-      <swiper-container [loop] = "true" autoplay="true" autoplay-delay="5000" speed = "1000" autoplay-pause-on-mouse-enter = "true">
+      <swiper-container [loop] = "true" autoplay="true" autoplay-delay="5000" speed = "1000">
         <swiper-slide>
           <div class="carousel-slide">
-            <img src="../../../assets/Produtos/CILINDROS_PNEUMATICOS__700x525.png" alt="CILINDROS PNEUMATICOS">
             <span class="product__name">CILINDROS PNEUMATICOS</span>
+            <img src="../../../assets/Produtos/CILINDROS_PNEUMATICOS__700x525.png" alt="CILINDROS PNEUMATICOS">
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="carousel-slide">
-            <img src="../../../assets/Produtos/FUSOS_ESFERICOS_E_CASTANHAS__700x525.png" alt="FUSOS E CASTANHAS">
             <span class="product__name">FUSOS E CASTANHAS</span>
+            <img src="../../../assets/Produtos/FUSOS_ESFERICOS_E_CASTANHAS__700x525.png" alt="FUSOS E CASTANHAS">
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="carousel-slide">
-            <img src="../../../assets/Produtos/GUIAS_LINEARES_TILHO_E_BLOCOS__700x525.png" alt="GUIAS LINEARES">
             <span class="product__name">GUIAS LINEARES</span>
+            <img src="../../../assets/Produtos/GUIAS_LINEARES_TILHO_E_BLOCOS__700x525.png" alt="GUIAS LINEARES">
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="carousel-slide">
-            <img src="../../../assets/Produtos/SISTEMAS_DE_TRATAMENTO_DE_AR__700x525.png" alt="SISTEMAS DE TRATAMENTO DE AR">
             <span class="product__name">SISTEMAS DE TRATAMENTO DE AR</span>
+            <img src="../../../assets/Produtos/SISTEMAS_DE_TRATAMENTO_DE_AR__700x525.png" alt="SISTEMAS DE TRATAMENTO DE AR">
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="carousel-slide">
-            <img src="../../../assets/Produtos/VALVULAS_PNEUMATICAS__700x525.png" alt="VÁLVULAS PNEUMÁTICAS">
             <span class="product__name">VÁLVULAS PNEUMÁTICAS</span>
+            <img src="../../../assets/Produtos/VALVULAS_PNEUMATICAS__700x525.png" alt="VÁLVULAS PNEUMÁTICAS">
           </div>
         </swiper-slide>
       </swiper-container>
-  </section>
+    </section>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#FF7A00" fill-opacity="1" d="M0,128L40,117.3C80,107,160,85,240,106.7C320,128,400,192,480,208C560,224,640,192,720,165.3C800,139,880,117,960,122.7C1040,128,1120,160,1200,170.7C1280,181,1360,171,1400,165.3L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
+      />
+    </svg>
 
-
-  <section class="about-us">
-    <img src="../../../assets/wave.svg" alt="wave" class="topwave">
-    <div class="content-section">
-      <h2 class="section-title">Quem Somos</h2>
-      <p>
-        A EMPORIO SPA é uma distribuidora de produtos de alto desenvolvimento
-        tecnológico voltados para a Automação Industrial. Com uma ampla gama de
-        produtos, atendemos todos os tipos de indústrias, oferecendo soluções
-        completas que incluem painéis de controle e comando, elementos de fixação
-        e movimentação, cabos, sensores, terminais, IHMs e muito mais.<br />
-        Nossa missão é contribuir para a eficiência e sustentabilidade na cadeia
-        produtiva de nossos clientes.
-      </p>
-    </div>
-    <img src="../../../assets/wave-down.svg" alt="wave-down" class="bottomwave">
-    <img src="../../../assets/fachada.jpg" alt="fachada" class="loja-img">
-  </section>
-
+    <section class="about-us">
+      <div [innerHTML]="svgContent" class="svg-anim"></div>
+      <div class="content-section">
+        <h2 class="section-title">Quem Somos</h2>
+        <p>
+          A EMPORIO SPA é uma distribuidora de produtos de alto desenvolvimento
+          tecnológico voltados para a Automação Industrial. Com uma ampla gama de
+          produtos, atendemos todos os tipos de indústrias, oferecendo soluções
+          completas que incluem painéis de controle e comando, elementos de fixação
+          e movimentação, cabos, sensores, terminais, IHMs e muito mais.<br />
+          Nossa missão é contribuir para a eficiência e sustentabilidade na cadeia
+          produtiva de nossos clientes.
+        </p>
+      </div>
+    </section>
+    <!-- <img src="../../../assets/fachada.jpg" alt="fachada" class="loja-img"> -->
+  
   <section class="content-section" #contactSection>
   <div class="contact-info__container">
     <!--? ===== Formulário ===== -->
